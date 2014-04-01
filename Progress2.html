@@ -1,17 +1,66 @@
 <!DOCTYPE html>
-<!-- saved from url=(0014)about:internet -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 <title>Progress till March 21, 2014 (DRAFT)</title>
 
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 <style type="text/css">
 body, td {
    font-family: sans-serif;
    background-color: white;
-   font-size: 12px;
-   margin: 8px;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  line-height: 20px;
 }
 
 tt, code, pre {
@@ -46,19 +95,21 @@ a:visited {
    color: rgb(50%, 0%, 50%);
 }
 
-pre {	
-   margin-top: 0;
-   max-width: 95%;
-   border: 1px solid #ccc;
-   white-space: pre-wrap;
+pre, img {
+  max-width: 100%;
 }
 
 pre code {
    display: block; padding: 0.5em;
 }
 
-code.r, code.cpp {
-   background-color: #F8F8F8;
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
 }
 
 table, td, th {
@@ -131,47 +182,7 @@ hr {
       page-break-after: avoid; 
    }
 }
-
 </style>
-
-<!-- Styles for R syntax highlighter -->
-<style type="text/css">
-   pre .operator,
-   pre .paren {
-     color: rgb(104, 118, 135)
-   }
-
-   pre .literal {
-     color: rgb(88, 72, 246)
-   }
-
-   pre .number {
-     color: rgb(0, 0, 205);
-   }
-
-   pre .comment {
-     color: rgb(76, 136, 107);
-   }
-
-   pre .keyword {
-     color: rgb(0, 0, 255);
-   }
-
-   pre .identifier {
-     color: rgb(0, 0, 0);
-   }
-
-   pre .string {
-     color: rgb(3, 106, 7);
-   }
-</style>
-
-<!-- R syntax highlighter -->
-<script type="text/javascript">
-var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
-hljs.initHighlightingOnLoad();
-</script>
-
 
 
 
@@ -211,9 +222,55 @@ hljs.initHighlightingOnLoad();
 
 <h1>Part 1: (Reiteration) Processing Code from Progress 1.</h1>
 
-<p><strong>Note: Some modification of variables in the last steps took place for code clarity. Overall, no structural change from Progress 1. Only the modified segment is displayed</strong></p>
+<p>**Note: Some modification of variables in the last steps took place for code clarity. Overall, no significant structural change from Progress 1.</p>
 
-<pre><code class="r"># 4. Fitting and Throwing Out Hits **Current Null Hypothesis: TypeS (i.e. WT
+<pre><code class="r"># Main Pipeline Using EdgeR (WT vs sxy), at time = 30.  by Nathaniel (April
+# 2014)
+
+library(limma)
+library(edgeR)
+
+# Loads RNA-Seq Raw Fragment Count
+raw.reads &lt;- read.table(&quot;Data/fragment_counts.txt&quot;, header = TRUE, sep = &quot;\t&quot;)
+
+# Loads Design Matrix for limma
+frag.matrix &lt;- read.table(&quot;Data/FragmentMatrix.txt&quot;, header = TRUE, sep = &quot;\t&quot;)
+
+# Loads Truncated GeneList (made from rc.bed)
+gene.list &lt;- read.table(&quot;Data/GeneID.txt&quot;, header = TRUE)
+rownames(gene.list) &lt;- gene.list$ID
+
+# Loads crp-S Target List
+crp.list &lt;- read.table(&quot;Data/crp.txt&quot;, header = TRUE)
+
+# Associating GeneID as KEY identifier for all datasets
+rownames(gene.list) &lt;- gene.list$ID
+rownames(raw.reads) &lt;- gene.list$ID
+
+# Creating Data Subset (with Restructuring) Wild Type and Sxy (K and S);
+# Time = 30
+small.meta &lt;- subset(frag.matrix, frag.matrix$Type %in% c(&quot;K&quot;, &quot;S&quot;) &amp; frag.matrix$Timepoint == 
+    &quot;30&quot;)
+small.meta$Type &lt;- factor(small.meta$Type)
+small.raw &lt;- raw.reads[, colnames(raw.reads) %in% small.meta$Sample]
+
+# Unloading Unneeded Files
+rm(raw.reads)
+rm(frag.matrix)
+
+# Running Dataset through EdgeR pipeline 1. Creating DGEList from Trimmed
+# Data
+dge.list &lt;- DGEList(counts = small.raw, group = small.meta$Timepoint)
+
+# 2. Creating Design Matrix
+sm.design &lt;- model.matrix(~Type, small.meta)
+
+# 3. ???
+dge.common.list &lt;- estimateGLMCommonDisp(dge.list, sm.design, verbose = FALSE)
+dge.trend.list &lt;- estimateGLMTrendedDisp(dge.common.list, sm.design)
+dge.tag.list &lt;- estimateGLMTagwiseDisp(dge.trend.list, sm.design)
+
+# 4. Fitting and Throwing Out Hits **Current Null Hypothesis: TypeS (i.e. WT
 # against sxy at time = 30)
 dge.fit &lt;- glmFit(dge.tag.list, sm.design)
 dge.lrt &lt;- glmLRT(dge.fit, coef = &quot;TypeS&quot;)
@@ -254,19 +311,606 @@ summary(dge.summ &lt;- decideTestsDGE(dge.lrt, p = 0.05, adjust = &quot;BH&quot;
 
 <p>What are the upregulated genes? What is the fold-change (Log Base 2)? Are any of the genes known crp-S genes? (Luckily, None!)</p>
 
+<pre><code class="r"># Searching for UP-regulated genes
+dge.up &lt;- dge.lrt$table[(dge.summ == 1), ]
+output.up.genes &lt;- gene.list[gene.list$ID %in% rownames(dge.up), ]
+show(output.up.genes)
+</code></pre>
+
+<pre><code>##              ID                                                  Names
+## HI_0062 HI_0062                         dnaK suppressor protein (dksA)
+## HI_0075 HI_0075 anaerobic ribonucleoside-triphosphate reductase (nrdD)
+## HI_0157 HI_0157                  beta-ketoacyl-ACP synthase III (fabH)
+## HI_0159 HI_0159                         conserved hypothetical protein
+## HI_0160 HI_0160       phosphatidylserine decarboxylase proenzyme (psd)
+## HI_0174 HI_0174                         conserved hypothetical protein
+## HI_0202 HI_0202             tRNA (guanine-N1)-methyltransferase (trmD)
+## HI_0203 HI_0203                         conserved hypothetical protein
+## HI_0231 HI_0231                      ATP-dependent RNA helicase (deaD)
+## HI_0328 HI_0328                              elongation factor P (efp)
+## HI_0419 HI_0419                                   protease%2C putative
+## HI_0514 HI_0514      DNA-directed RNA polymerase%2C beta&#39; chain (rpoC)
+## HI_0515 HI_0515       DNA-directed RNA polymerase%2C beta chain (rpoB)
+## HI_0516 HI_0516                            ribosomal protein L1 (rpL1)
+## HI_0517 HI_0517                          ribosomal protein L11 (rpL11)
+## HI_0544 HI_0544                            ribosomal protein L9 (rpL9)
+## HI_0545 HI_0545                          ribosomal protein S18 (rpS18)
+## HI_0546 HI_0546                primosomal replication protein N (priB)
+## HI_0547 HI_0547                            ribosomal protein S6 (rpS6)
+## HI_0758 HI_0758                          ribosomal protein L31 (rpL31)
+## HI_0776 HI_0776                          ribosomal protein S10 (rpS10)
+## HI_0777 HI_0777                            ribosomal protein L3 (rpL3)
+## HI_0778 HI_0778                            ribosomal protein L4 (rpL4)
+## HI_0779 HI_0779                          ribosomal protein L23 (rpL23)
+## HI_0780 HI_0780                            ribosomal protein L2 (rpL2)
+## HI_0781 HI_0781                          ribosomal protein S19 (rpS19)
+## HI_0782 HI_0782                          ribosomal protein L22 (rpL22)
+## HI_0783 HI_0783                            ribosomal protein S3 (rpS3)
+## HI_0784 HI_0784                          ribosomal protein L16 (rpL16)
+## HI_0785 HI_0785                          ribosomal protein L29 (rpL29)
+## HI_0786 HI_0786                          ribosomal protein S17 (rpS17)
+## HI_0788 HI_0788                          ribosomal protein L14 (rpL14)
+## HI_0789 HI_0789                          ribosomal protein L24 (rpL24)
+## HI_0790 HI_0790                            ribosomal protein L5 (rpL5)
+## HI_0791 HI_0791                          ribosomal protein S14 (rpS14)
+## HI_0794 HI_0794                          ribosomal protein L18 (rpL18)
+## HI_0795 HI_0795                            ribosomal protein S5 (rpS5)
+## HI_0796 HI_0796                          ribosomal protein L30 (rpL30)
+## HI_0797 HI_0797                          ribosomal protein L15 (rpL15)
+## HI_0799 HI_0799                          ribosomal protein S13 (rpS13)
+## HI_0800 HI_0800                          ribosomal protein S11 (rpS11)
+## HI_0801 HI_0801                            ribosomal protein S4 (rpS4)
+## HI_0802 HI_0802      DNA-directed RNA polymerase%2C alpha chain (rpoA)
+## HI_0803 HI_0803                           ribosomal protein L17 (rplQ)
+## HI_0862 HI_0862                         conserved hypothetical protein
+## HI_0979 HI_0979                      nitrogen fixation protein (nifR3)
+## HI_0998 HI_0998                          ribosomal protein L34 (rpL34)
+## HI_1002 HI_1002           thiophene and furan oxidation protein (thdF)
+## HI_1211 HI_1211                           lysyl-tRNA synthetase (lysU)
+## HI_1237 HI_1237                           heat shock protein 70 (dnaK)
+## HI_1328 HI_1328                          ribosomal protein S15 (rpS15)
+## HI_1427 HI_1427                         predicted coding region HI1427
+## HI_1442 HI_1442                            ribosomal protein S9 (rpS9)
+## HI_1443 HI_1443                          ribosomal protein L13 (rpL13)
+</code></pre>
+
+<pre><code class="r">show(data.frame(ID = rownames(dge.up), logFC = dge.up$logFC))
+</code></pre>
+
+<pre><code>##         ID  logFC
+## 1  HI_0062 0.7849
+## 2  HI_0075 0.8017
+## 3  HI_0157 0.9630
+## 4  HI_0159 0.7327
+## 5  HI_0160 1.1737
+## 6  HI_0174 0.7818
+## 7  HI_0202 0.6986
+## 8  HI_0203 0.6796
+## 9  HI_0231 0.8305
+## 10 HI_0328 0.9768
+## 11 HI_0419 0.8817
+## 12 HI_0514 0.7715
+## 13 HI_0515 0.8759
+## 14 HI_0516 0.7924
+## 15 HI_0517 0.7773
+## 16 HI_0544 0.9703
+## 17 HI_0545 0.9798
+## 18 HI_0546 1.0062
+## 19 HI_0547 1.1085
+## 20 HI_0758 1.3671
+## 21 HI_0776 1.1058
+## 22 HI_0777 1.1250
+## 23 HI_0778 1.1243
+## 24 HI_0779 1.1915
+## 25 HI_0780 1.1652
+## 26 HI_0781 1.0883
+## 27 HI_0782 1.0031
+## 28 HI_0783 0.9736
+## 29 HI_0784 0.9581
+## 30 HI_0785 1.0248
+## 31 HI_0786 1.0525
+## 32 HI_0788 0.8810
+## 33 HI_0789 0.8358
+## 34 HI_0790 0.8257
+## 35 HI_0791 0.7836
+## 36 HI_0794 0.7647
+## 37 HI_0795 0.8456
+## 38 HI_0796 0.8499
+## 39 HI_0797 0.8053
+## 40 HI_0799 0.6133
+## 41 HI_0800 0.6937
+## 42 HI_0801 0.7002
+## 43 HI_0802 0.6931
+## 44 HI_0803 0.8316
+## 45 HI_0862 1.1653
+## 46 HI_0979 0.7638
+## 47 HI_0998 0.9628
+## 48 HI_1002 0.8580
+## 49 HI_1211 0.8348
+## 50 HI_1237 0.8541
+## 51 HI_1328 0.8176
+## 52 HI_1427 0.9403
+## 53 HI_1442 0.8341
+## 54 HI_1443 0.7725
+</code></pre>
+
+<pre><code class="r">nrow(dge.up[rownames(dge.up) %in% crps.list$orf, ])
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
 <p>What are the downregulated genes? What is the fold-change (Log Base 2)? Are any of the genes known crp-S genes? (Yes, except the one that didn&#39;t change much.)</p>
+
+<pre><code class="r"># Searching for DOWN-regulated genes
+dge.down &lt;- dge.lrt$table[(dge.summ == -1), ]
+output.down.genes &lt;- gene.list[gene.list$ID %in% rownames(dge.down), ]
+show(output.down.genes)
+</code></pre>
+
+<pre><code>##                  ID
+## HI_0051     HI_0051
+## HI_0052     HI_0052
+## HI_0061     HI_0061
+## HI_0257     HI_0257
+## HI_0296     HI_0296
+## HI_0297     HI_0297
+## HI_0298     HI_0298
+## HI_0299     HI_0299
+## HI_0357     HI_0357
+## HI_0365     HI_0365
+## HI_0366     HI_0366
+## HI_0434     HI_0434
+## HI_0435     HI_0435
+## HI_0436     HI_0436
+## HI_0437     HI_0437
+## HI_0438     HI_0438
+## HI_0439     HI_0439
+## HI_0503     HI_0503
+## HI_0504     HI_0504
+## HI_0534     HI_0534
+## HI_0601     HI_0601
+## HI_0608     HI_0608
+## HI_0610     HI_0610
+## HI_0614     HI_0614
+## HI_0654     HI_0654
+## HI_0655     HI_0655
+## HI_0656     HI_0656
+## HI_0656.1 HI_0656.1
+## HI_0658     HI_0658
+## HI_0659     HI_0659
+## HI_0660     HI_0660
+## HI_0683     HI_0683
+## HI_0684     HI_0684
+## HI_0685     HI_0685
+## HI_0764     HI_0764
+## HI_0787     HI_0787
+## HI_0804     HI_0804
+## HI_0822     HI_0822
+## HI_0830     HI_0830
+## HI_0831     HI_0831
+## HI_0938     HI_0938
+## HI_0939     HI_0939
+## HI_0940     HI_0940
+## HI_0941     HI_0941
+## HI_0942     HI_0942
+## HI_0952     HI_0952
+## HI_0982     HI_0982
+## HI_0983     HI_0983
+## HI_0984     HI_0984
+## HI_0985     HI_0985
+## HI_1008     HI_1008
+## HI_1030     HI_1030
+## HI_1109     HI_1109
+## HI_1110     HI_1110
+## HI_1111     HI_1111
+## HI_1112     HI_1112
+## HI_1117     HI_1117
+## HI_1124     HI_1124
+## HI_1167     HI_1167
+## HI_1182     HI_1182
+## HI_1183     HI_1183
+## HI_1384     HI_1384
+## HI_1385     HI_1385
+## HI_1387     HI_1387
+## HI_1388     HI_1388
+## HI_1388.1 HI_1388.1
+## HI_1389     HI_1389
+## HI_1389.1 HI_1389.1
+## HI_1390     HI_1390
+## HI_1430     HI_1430
+## HI_1431     HI_1431
+## HI_1432     HI_1432
+## HI_1478     HI_1478
+## HI_1530     HI_1530
+## HI_1631     HI_1631
+## HI_1662     HI_1662
+## HI_1731     HI_1731
+##                                                                                        Names
+## HI_0051                                         conserved hypothetical transmembrane protein
+## HI_0052                                                       conserved hypothetical protein
+## HI_0061                                                         recombination protein (rec2)
+## HI_0257                                             sigma(54) modulation protein%2C putative
+## HI_0296                        type 4 prepilin-like protein specific leader peptidase (hopD)
+## HI_0297                                                            protein transport protein
+## HI_0298                                                            protein transport protein
+## HI_0299                                               prepilin peptidase dependent protein D
+## HI_0357                                            thiamine biosynthesis protein%2C putative
+## HI_0365                                                       conserved hypothetical protein
+## HI_0366                       fimbrial biogenesis and twitching motility protein%2C putative
+## HI_0434                                                          competence protein F (comF)
+## HI_0435                                                          competence protein E (comE)
+## HI_0436                                                          competence protein D (comD)
+## HI_0437                                                          competence protein C (comC)
+## HI_0438                                                          competence protein B (comB)
+## HI_0439                                                          competence protein A (comA)
+## HI_0503                                  D-ribose ABC transporter%2C permease protein (rbsC)
+## HI_0504                       D-ribose ABC transporter%2C periplasmic-binding protein (rbsB)
+## HI_0534                                                       aspartate ammonia-lyase (aspA)
+## HI_0601                                                    DNA transformation protein (tfoX)
+## HI_0608                                                       conserved hypothetical protein
+## HI_0610                                                             L-fucose permease (fucP)
+## HI_0614                                                            L-fucose isomerase (fucI)
+## HI_0654                                             DNA-3-methyladenine glycosidase I (tagI)
+## HI_0655                                                     shikimate 5-dehydrogenase (aroE)
+## HI_0656                                                       conserved hypothetical protein
+## HI_0656.1                                                     conserved hypothetical protein
+## HI_0658                                               ABC transporter%2C ATP-binding protein
+## HI_0659                                                       predicted coding region HI0659
+## HI_0660                                                       predicted coding region HI0660
+## HI_0683                     anaerobic glycerol-3-phosphate dehydrogenase%2C subunit C (glpC)
+## HI_0684                     anaerobic glycerol-3-phosphate dehydrogenase%2C subunit B (glpB)
+## HI_0685                     anaerobic glycerol-3-phosphate dehydrogenase%2C subunit A (glpA)
+## HI_0764                               3%2C4-dihydroxy-2-butanone 4-phosphate synthase (ribB)
+## HI_0787                                                       predicted coding region HI0787
+## HI_0804                                                       predicted coding region HI0804
+## HI_0822                      galactose ABC transporter%2C periplasmic-binding protein (mglB)
+## HI_0830                                                          trp operon repressor (trpR)
+## HI_0831                           monofunctional biosynthetic peptidoglycan transglycosylase
+## HI_0938                                                       predicted coding region HI0938
+## HI_0939                                                       predicted coding region HI0939
+## HI_0940                                                       predicted coding region HI0940
+## HI_0941                                                       predicted coding region HI0941
+## HI_0942                                         exodeoxyribonuclease V%2C gamma chain (recC)
+## HI_0952                                                            DNA repair protein (radC)
+## HI_0982                                                         6-phosphofructokinase (pfkA)
+## HI_0983                                                       predicted coding region HI0983
+## HI_0984                                                       conserved hypothetical protein
+## HI_0985                                                        DNA processing chain A (dprA)
+## HI_1008                                                       conserved hypothetical protein
+## HI_1030                                         conserved hypothetical transmembrane protein
+## HI_1109                                  D-xylose ABC transporter%2C permease protein (xylH)
+## HI_1110                               D-xylose ABC transporter%2C ATP-binding protein (xylG)
+## HI_1111                       D-xylose ABC transporter%2C periplasmic-binding protein (xylF)
+## HI_1112                                                              xylose isomerase (xylA)
+## HI_1117                                                            competence protein (comM)
+## HI_1124                   oligopeptide ABC transporter%2C periplasmic-binding protein (oppA)
+## HI_1167                                                phosphoserine aminotransferase (serC)
+## HI_1182                                                       predicted coding region HI1182
+## HI_1183                                                       predicted coding region HI1183
+## HI_1384                                                                      ferritin (rsgA)
+## HI_1385                                                                      ferritin (rsgA)
+## HI_1387                                             anthranilate synthase component I (trpE)
+## HI_1388                                            anthranilate synthase component II (trpG)
+## HI_1388.1                                                   predicted coding region HI1388.1
+## HI_1389                                         anthanilate phosphoribosyltransferase (trpD)
+## HI_1389.1 indole-3-glycerol phosphate synthase / phosphoribosylanthranilate isomerase (trpC)
+## HI_1390                                                 hydrogenase formation protein (hypG)
+## HI_1430                                                  short chain dehydrogenase/reductase
+## HI_1431                                              tryptophan synthase beta subunit (trpB)
+## HI_1432                                             tryptophan synthase alpha subunit (trpA)
+## HI_1478                                                                    transposase (muA)
+## HI_1530                                                            glutamate permease (gltS)
+## HI_1631                                                       predicted coding region HI1631
+## HI_1662                                     2-oxoglutarate dehydrogenase E1 component (sucA)
+## HI_1731                                                       conserved hypothetical protein
+</code></pre>
+
+<pre><code class="r">show(data.frame(ID = rownames(dge.down), logFC = dge.down$logFC))
+</code></pre>
+
+<pre><code>##           ID   logFC
+## 1    HI_0051 -1.7612
+## 2    HI_0052 -1.6045
+## 3    HI_0061 -3.4450
+## 4    HI_0257 -0.9327
+## 5    HI_0296 -3.5333
+## 6    HI_0297 -5.3063
+## 7    HI_0298 -5.5423
+## 8    HI_0299 -5.9934
+## 9    HI_0357 -1.3351
+## 10   HI_0365 -3.2063
+## 11   HI_0366 -2.5436
+## 12   HI_0434 -2.9480
+## 13   HI_0435 -3.7160
+## 14   HI_0436 -6.7182
+## 15   HI_0437 -5.0837
+## 16   HI_0438 -5.1813
+## 17   HI_0439 -6.0144
+## 18   HI_0503 -0.8010
+## 19   HI_0504 -0.8562
+## 20   HI_0534 -0.4259
+## 21   HI_0601 -8.2757
+## 22   HI_0608 -0.5000
+## 23   HI_0610 -0.9200
+## 24   HI_0614 -1.3011
+## 25   HI_0654 -0.7964
+## 26   HI_0655 -1.0414
+## 27   HI_0656 -1.1267
+## 28 HI_0656.1 -1.1407
+## 29   HI_0658 -1.4724
+## 30   HI_0659 -3.0494
+## 31   HI_0660 -3.1890
+## 32   HI_0683 -0.9495
+## 33   HI_0684 -1.1582
+## 34   HI_0685 -1.1416
+## 35   HI_0764 -0.8782
+## 36   HI_0787 -1.7679
+## 37   HI_0804 -1.0849
+## 38   HI_0822 -0.4271
+## 39   HI_0830 -1.3507
+## 40   HI_0831 -1.1903
+## 41   HI_0938 -5.8639
+## 42   HI_0939 -4.5807
+## 43   HI_0940 -4.1195
+## 44   HI_0941 -3.8820
+## 45   HI_0942 -0.8633
+## 46   HI_0952 -4.4825
+## 47   HI_0982 -0.8377
+## 48   HI_0983 -1.0803
+## 49   HI_0984 -1.3282
+## 50   HI_0985 -5.8245
+## 51   HI_1008 -5.4082
+## 52   HI_1030 -0.9376
+## 53   HI_1109 -1.3190
+## 54   HI_1110 -1.1869
+## 55   HI_1111 -1.0830
+## 56   HI_1112 -1.5455
+## 57   HI_1117 -3.2864
+## 58   HI_1124 -1.4846
+## 59   HI_1167 -0.8582
+## 60   HI_1182 -5.9394
+## 61   HI_1183 -2.8188
+## 62   HI_1384 -0.7698
+## 63   HI_1385 -0.8489
+## 64   HI_1387 -3.4621
+## 65   HI_1388 -3.5009
+## 66 HI_1388.1 -3.4101
+## 67   HI_1389 -3.3852
+## 68 HI_1389.1 -3.1555
+## 69   HI_1390 -2.8530
+## 70   HI_1430 -2.9157
+## 71   HI_1431 -2.8568
+## 72   HI_1432 -2.9422
+## 73   HI_1478 -0.9327
+## 74   HI_1530 -0.7118
+## 75   HI_1631 -4.1327
+## 76   HI_1662 -0.6946
+## 77   HI_1731 -0.9637
+</code></pre>
+
+<pre><code class="r">nrow(dge.down[rownames(dge.down) %in% crps.list$orf, ])
+</code></pre>
+
+<pre><code>## [1] 26
+</code></pre>
 
 <h2>Question 2: What is the crf-S gene that is not differentially expressed?</h2>
 
+<pre><code class="r"># Searching for the non-differential crp-S gene
+output.odd.crps &lt;- crps.list[-which(crps.list$orf %in% top.hits), ]
+output.odd.crps &lt;- gene.list[gene.list$ID %in% output.odd.crps$orf, ]
+show(output.odd.crps)
+</code></pre>
+
+<pre><code>##              ID                                     Names
+## HI_0250 HI_0250 single-stranded DNA binding protein (ssb)
+</code></pre>
+
 <h2>Question 3: What is the differential expression profile like for time = 0?</h2>
 
-<p><strong>Noted: Using the EdgeR Pipeline!</strong></p>
+<p><strong>Note: Using the EdgeR Pipeline!</strong></p>
 
-<p>Question 4:</p>
+<pre><code class="r"># Main Pipeline Using EdgeR (WT vs sxy), at time = 0.  by Nathaniel (April
+# 2014)
+
+# library(limma) library(edgeR)
+
+# Reset Workspace
+rm(list = ls())
+
+# Loads RNA-Seq Raw Fragment Count
+raw.reads &lt;- read.table(&quot;Data/fragment_counts.txt&quot;, header = TRUE, sep = &quot;\t&quot;)
+
+# Loads Design Matrix for limma
+frag.matrix &lt;- read.table(&quot;Data/FragmentMatrix.txt&quot;, header = TRUE, sep = &quot;\t&quot;)
+
+# Loads Truncated GeneList (made from rc.bed)
+gene.list &lt;- read.table(&quot;Data/GeneID.txt&quot;, header = TRUE)
+rownames(gene.list) &lt;- gene.list$ID
+
+# Loads crp-S Target List
+crp.list &lt;- read.table(&quot;Data/crp.txt&quot;, header = TRUE)
+
+# Associating GeneID as KEY identifier for all datasets
+rownames(gene.list) &lt;- gene.list$ID
+rownames(raw.reads) &lt;- gene.list$ID
+
+# Creating Data Subset (with Restructuring) Wild Type and Sxy (K and S);
+# Time = 0
+small.meta &lt;- subset(frag.matrix, frag.matrix$Type %in% c(&quot;K&quot;, &quot;S&quot;) &amp; frag.matrix$Timepoint == 
+    &quot;0&quot;)
+small.meta$Type &lt;- factor(small.meta$Type)
+small.raw &lt;- raw.reads[, colnames(raw.reads) %in% small.meta$Sample]
+
+# Unloading Unneeded Files
+rm(raw.reads)
+rm(frag.matrix)
+
+# Running Dataset through EdgeR pipeline 1. Creating DGEList from Trimmed
+# Data
+dge.list &lt;- DGEList(counts = small.raw, group = small.meta$Timepoint)
+
+# 2. Creating Design Matrix
+sm.design &lt;- model.matrix(~Type, small.meta)
+
+# 3. ???
+dge.common.list &lt;- estimateGLMCommonDisp(dge.list, sm.design, verbose = FALSE)
+dge.trend.list &lt;- estimateGLMTrendedDisp(dge.common.list, sm.design)
+dge.tag.list &lt;- estimateGLMTagwiseDisp(dge.trend.list, sm.design)
+
+# 4. Fitting and Throwing Out Hits **Current Null Hypothesis: TypeS (i.e. WT
+# against sxy at time = 30)
+dge.fit &lt;- glmFit(dge.tag.list, sm.design)
+dge.lrt &lt;- glmLRT(dge.fit, coef = &quot;TypeS&quot;)
+dge.top &lt;- topTags(dge.lrt, n = Inf)
+top.hits &lt;- rownames(dge.top$table[dge.top$table$FDR &lt; 0.05, ])
+dge.cpm &lt;- cpm(dge.tag.list)[top.hits, ]
+output.genes &lt;- gene.list[gene.list$ID %in% top.hits, ]
+rownames(output.genes) &lt;- NULL
+
+# Creating crp-S Subset List
+crps.list &lt;- subset(crp.list, prom %in% c(&quot;crps&quot;, &quot;sxy&quot;))
+rownames(crps.list) &lt;- NULL
+</code></pre>
+
+<p>A: What are all the genes (with q &lt; 0.05)?</p>
+
+<pre><code class="r"># Displaying the top hits
+output.genes
+</code></pre>
+
+<pre><code>##           ID
+## 1    HI_0062
+## 2    HI_0126
+## 3    HI_0129
+## 4    HI_0131
+## 5    HI_0134
+## 6    HI_0146
+## 7    HI_0147
+## 8    HI_0148
+## 9    HI_0206
+## 10   HI_0262
+## 11   HI_0263
+## 12   HI_0264
+## 13   HI_0287
+## 14   HI_0288
+## 15   HI_0289
+## 16   HI_0501
+## 17   HI_0520
+## 18   HI_0521
+## 19   HI_0534
+## 20   HI_0601
+## 21   HI_0620
+## 22   HI_0684
+## 23   HI_0712
+## 24   HI_0745
+## 25   HI_0809
+## 26   HI_0822
+## 27   HI_0823
+## 28   HI_0824
+## 29   HI_1010
+## 30   HI_1011
+## 31   HI_1012
+## 32   HI_1013
+## 33   HI_1014
+## 34   HI_1015
+## 35   HI_1016
+## 36   HI_1020
+## 37   HI_1080
+## 38 HI_1126.1
+## 39   HI_1127
+## 40   HI_1173
+## 41   HI_1218
+## 42   HI_1245
+## 43   HI_1356
+## 44   HI_1357
+## 45   HI_1398
+## 46   HI_1427
+## 47 HI_1434.1
+## 48   HI_1505
+## 49   HI_1506
+## 50   HI_1518
+## 51   HI_1586
+## 52   HI_1659
+## 53   HI_1712
+##                                                               Names
+## 1                                    dnaK suppressor protein (dksA)
+## 2              ferric ABC transporter%2C ATP-binding protein (afuC)
+## 3                                    predicted coding region HI0129
+## 4                                                      afuA protein
+## 5                                    predicted coding region HI0134
+## 6                                    conserved hypothetical protein
+## 7                      conserved hypothetical transmembrane protein
+## 8                                    conserved hypothetical protein
+## 9                                       5&#39;-nucleotidase%2C putative
+## 10                             heme-hemopexin utilization protein C
+## 11                      heme-hemopexin utilization protein B (hxuB)
+## 12                      heme-hemopexin utilization protein A (hxuA)
+## 13                      tryptophan-specific transport protein (mtr)
+## 14                                        L-serine deaminase (sdaA)
+## 15                                        serine transporter (sdaC)
+## 16                    high affinity ribose transport protein (rbsD)
+## 17                                   conserved hypothetical protein
+## 18                                   conserved hypothetical protein
+## 19                                   aspartate ammonia-lyase (aspA)
+## 20                                DNA transformation protein (tfoX)
+## 21                             28 kDa outer membrane protein (hlpA)
+## 22 anaerobic glycerol-3-phosphate dehydrogenase%2C subunit B (glpB)
+## 23                                       hemoglobin-binding protein
+## 24                                         L-asparaginase II (ansB)
+## 25                         phosphoenolpyruvate carboxykinase (pckA)
+## 26  galactose ABC transporter%2C periplasmic-binding protein (mglB)
+## 27        galactoside ABC transporter%2C ATP-binding protein (mglA)
+## 28           galactoside ABC transporter%2C permease protein (mglC)
+## 29                   3-hydroxyisobutyrate dehydrogenase%2C putative
+## 30                                   conserved hypothetical protein
+## 31                                      sugar isomerase%2C putative
+## 32                                   conserved hypothetical protein
+## 33                                   conserved hypothetical protein
+## 34                                        gluconate permease (gntP)
+## 35                                   predicted coding region HI1016
+## 36          thiamin ABC transporter%2C permease protein%2C putative
+## 37        amino acid ABC transporter%2C periplasmic-binding protein
+## 38                                 predicted coding region HI1126.1
+## 39                                   predicted coding region HI1127
+## 40                                              sprt protein (sprT)
+## 41                                        L-lactate permease (lctP)
+## 42                                malate oxidoreductase%2C putative
+## 43                                4-alpha-glucanotransferase (malQ)
+## 44                       1%2C4-alpha-glucan branching enzyme (glgB)
+## 45                            fumarate hydratase%2C class II (fumC)
+## 46                                   predicted coding region HI1427
+## 47                                   cold shock-like protein (cspD)
+## 48                                   predicted coding region HI1505
+## 49                                   predicted coding region HI1506
+## 50                                   predicted coding region HI1518
+## 51                 conserved hypothetical integral membrane protein
+## 52       ribonucleoside-diphosphate reductase%2C alpha chain (nrdA)
+## 53            phosphoenolpyruvate-protein phosphotransferase (ptsI)
+</code></pre>
+
+<p>B: Are all the known sxy-dependent genes in the hit list also? (NO, Only 1 Present!)</p>
+
+<pre><code class="r"># Comparing if all crp-S entries fit the RNA-Seq Data
+nrow(crps.list)
+</code></pre>
+
+<pre><code>## [1] 27
+</code></pre>
+
+<pre><code class="r">nrow(output.genes[output.genes$ID %in% crps.list$orf, ])
+</code></pre>
+
+<pre><code>## [1] 1
+</code></pre>
+
+<h2>Question 4: Is the time = 30 differential expression profile reproducible using a different pipeline?</h2>
+
+<p><strong>Note: Using the DESeq Pipeline!</strong></p>
 
 <h1>END</h1>
 
 </body>
 
 </html>
-
