@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>Progress till March 21, 2014 (DRAFT)</title>
+<title>Progress till March 21 AND 28, 2014</title>
 
 <!-- Styles for R syntax highlighter -->
 <style type="text/css">
@@ -189,7 +189,7 @@ hr {
 </head>
 
 <body>
-<h1>Progress till March 21, 2014 (DRAFT)</h1>
+<h1>Progress till March 21 AND 28, 2014</h1>
 
 <h2>Reiteration</h2>
 
@@ -202,7 +202,7 @@ hr {
 <p>Assumption: Parts of the pipeline are done &ldquo;as-is&rdquo; according to the STAT540 tutorial. Further understanding of the underlying processing step is needed.</p>
 
 <p>Results:
-1. 131 Genes Differentially Expressed.
+1. 131 Genes Differentially Expressed.<br/>
 2. Only 26 out of 27 known crf-S genes show differential expressions.</p>
 
 <h2>Addressing Questions in E-mails</h2>
@@ -223,74 +223,6 @@ hr {
 <h1>Part 1: (Reiteration) Processing Code from Progress 1.</h1>
 
 <p>**Note: Some modification of variables in the last steps took place for code clarity. Overall, no significant structural change from Progress 1.</p>
-
-<pre><code class="r"># Main Pipeline Using EdgeR (WT vs sxy), at time = 30.  by Nathaniel (April
-# 2014)
-
-library(limma)
-library(edgeR)
-
-# Loads RNA-Seq Raw Fragment Count
-raw.reads &lt;- read.table(&quot;Data/fragment_counts.txt&quot;, header = TRUE, sep = &quot;\t&quot;)
-
-# Loads Design Matrix for limma
-frag.matrix &lt;- read.table(&quot;Data/FragmentMatrix.txt&quot;, header = TRUE, sep = &quot;\t&quot;)
-
-# Loads Truncated GeneList (made from rc.bed)
-gene.list &lt;- read.table(&quot;Data/GeneID.txt&quot;, header = TRUE)
-rownames(gene.list) &lt;- gene.list$ID
-
-# Loads crp-S Target List
-crp.list &lt;- read.table(&quot;Data/crp.txt&quot;, header = TRUE)
-
-# Associating GeneID as KEY identifier for all datasets
-rownames(gene.list) &lt;- gene.list$ID
-rownames(raw.reads) &lt;- gene.list$ID
-
-# Creating Data Subset (with Restructuring) Wild Type and Sxy (K and S);
-# Time = 30
-small.meta &lt;- subset(frag.matrix, frag.matrix$Type %in% c(&quot;K&quot;, &quot;S&quot;) &amp; frag.matrix$Timepoint == 
-    &quot;30&quot;)
-small.meta$Type &lt;- factor(small.meta$Type)
-small.raw &lt;- raw.reads[, colnames(raw.reads) %in% small.meta$Sample]
-
-# Unloading Unneeded Files
-rm(raw.reads)
-rm(frag.matrix)
-
-# Running Dataset through EdgeR pipeline 1. Creating DGEList from Trimmed
-# Data
-dge.list &lt;- DGEList(counts = small.raw, group = small.meta$Timepoint)
-
-# 2. Creating Design Matrix
-sm.design &lt;- model.matrix(~Type, small.meta)
-
-# 3. ???
-dge.common.list &lt;- estimateGLMCommonDisp(dge.list, sm.design, verbose = FALSE)
-dge.trend.list &lt;- estimateGLMTrendedDisp(dge.common.list, sm.design)
-dge.tag.list &lt;- estimateGLMTagwiseDisp(dge.trend.list, sm.design)
-
-# 4. Fitting and Throwing Out Hits **Current Null Hypothesis: TypeS (i.e. WT
-# against sxy at time = 30)
-dge.fit &lt;- glmFit(dge.tag.list, sm.design)
-dge.lrt &lt;- glmLRT(dge.fit, coef = &quot;TypeS&quot;)
-dge.top &lt;- topTags(dge.lrt, n = Inf)
-top.hits &lt;- rownames(dge.top$table[dge.top$table$FDR &lt; 0.05, ])
-dge.cpm &lt;- cpm(dge.tag.list)[top.hits, ]
-output.genes &lt;- gene.list[gene.list$ID %in% top.hits, ]
-rownames(output.genes) &lt;- NULL
-
-# Creating crp-S Subset List
-crps.list &lt;- subset(crp.list, prom %in% c(&quot;crps&quot;, &quot;sxy&quot;))
-rownames(crps.list) &lt;- NULL
-
-# Displaying the top hits
-output.genes
-
-# Comparing if all crp-S entries fit the RNA-Seq Data
-nrow(crps.list)
-nrow(output.genes[output.genes$ID %in% crps.list$orf, ])
-</code></pre>
 
 <h1>Part 2: Analysis</h1>
 
@@ -711,69 +643,6 @@ show(output.odd.crps)
 
 <p><strong>Note: Using the EdgeR Pipeline!</strong></p>
 
-<pre><code class="r"># Main Pipeline Using EdgeR (WT vs sxy), at time = 0.  by Nathaniel (April
-# 2014)
-
-# library(limma) library(edgeR)
-
-# Reset Workspace
-rm(list = ls())
-
-# Loads RNA-Seq Raw Fragment Count
-raw.reads &lt;- read.table(&quot;Data/fragment_counts.txt&quot;, header = TRUE, sep = &quot;\t&quot;)
-
-# Loads Design Matrix for limma
-frag.matrix &lt;- read.table(&quot;Data/FragmentMatrix.txt&quot;, header = TRUE, sep = &quot;\t&quot;)
-
-# Loads Truncated GeneList (made from rc.bed)
-gene.list &lt;- read.table(&quot;Data/GeneID.txt&quot;, header = TRUE)
-rownames(gene.list) &lt;- gene.list$ID
-
-# Loads crp-S Target List
-crp.list &lt;- read.table(&quot;Data/crp.txt&quot;, header = TRUE)
-
-# Associating GeneID as KEY identifier for all datasets
-rownames(gene.list) &lt;- gene.list$ID
-rownames(raw.reads) &lt;- gene.list$ID
-
-# Creating Data Subset (with Restructuring) Wild Type and Sxy (K and S);
-# Time = 0
-small.meta &lt;- subset(frag.matrix, frag.matrix$Type %in% c(&quot;K&quot;, &quot;S&quot;) &amp; frag.matrix$Timepoint == 
-    &quot;0&quot;)
-small.meta$Type &lt;- factor(small.meta$Type)
-small.raw &lt;- raw.reads[, colnames(raw.reads) %in% small.meta$Sample]
-
-# Unloading Unneeded Files
-rm(raw.reads)
-rm(frag.matrix)
-
-# Running Dataset through EdgeR pipeline 1. Creating DGEList from Trimmed
-# Data
-dge.list &lt;- DGEList(counts = small.raw, group = small.meta$Timepoint)
-
-# 2. Creating Design Matrix
-sm.design &lt;- model.matrix(~Type, small.meta)
-
-# 3. ???
-dge.common.list &lt;- estimateGLMCommonDisp(dge.list, sm.design, verbose = FALSE)
-dge.trend.list &lt;- estimateGLMTrendedDisp(dge.common.list, sm.design)
-dge.tag.list &lt;- estimateGLMTagwiseDisp(dge.trend.list, sm.design)
-
-# 4. Fitting and Throwing Out Hits **Current Null Hypothesis: TypeS (i.e. WT
-# against sxy at time = 30)
-dge.fit &lt;- glmFit(dge.tag.list, sm.design)
-dge.lrt &lt;- glmLRT(dge.fit, coef = &quot;TypeS&quot;)
-dge.top &lt;- topTags(dge.lrt, n = Inf)
-top.hits &lt;- rownames(dge.top$table[dge.top$table$FDR &lt; 0.05, ])
-dge.cpm &lt;- cpm(dge.tag.list)[top.hits, ]
-output.genes &lt;- gene.list[gene.list$ID %in% top.hits, ]
-rownames(output.genes) &lt;- NULL
-
-# Creating crp-S Subset List
-crps.list &lt;- subset(crp.list, prom %in% c(&quot;crps&quot;, &quot;sxy&quot;))
-rownames(crps.list) &lt;- NULL
-</code></pre>
-
 <p>A: What are all the genes (with q &lt; 0.05)?</p>
 
 <pre><code class="r"># Displaying the top hits
@@ -890,7 +759,7 @@ output.genes
 ## 53            phosphoenolpyruvate-protein phosphotransferase (ptsI)
 </code></pre>
 
-<p>B: Are all the known sxy-dependent genes in the hit list also? (NO, Only 1 Present!)</p>
+<p>B: Are all the known sxy-dependent genes in the hit list also? (NO, Only 1 Present! AND&hellip; it&#39;s sxy!)</p>
 
 <pre><code class="r"># Comparing if all crp-S entries fit the RNA-Seq Data
 nrow(crps.list)
@@ -905,9 +774,169 @@ nrow(crps.list)
 <pre><code>## [1] 1
 </code></pre>
 
+<pre><code class="r">output.genes[output.genes$ID %in% crps.list$orf, ]
+</code></pre>
+
+<pre><code>##         ID                             Names
+## 20 HI_0601 DNA transformation protein (tfoX)
+</code></pre>
+
 <h2>Question 4: Is the time = 30 differential expression profile reproducible using a different pipeline?</h2>
 
 <p><strong>Note: Using the DESeq Pipeline!</strong></p>
+
+<p>A: What are all the genes (with q &lt; 0.05)?</p>
+
+<pre><code class="r"># Displaying the top hits
+output.genes
+</code></pre>
+
+<pre><code>##                  ID
+## HI_0061     HI_0061
+## HI_0157     HI_0157
+## HI_0160     HI_0160
+## HI_0257     HI_0257
+## HI_0296     HI_0296
+## HI_0297     HI_0297
+## HI_0298     HI_0298
+## HI_0299     HI_0299
+## HI_0365     HI_0365
+## HI_0366     HI_0366
+## HI_0434     HI_0434
+## HI_0435     HI_0435
+## HI_0436     HI_0436
+## HI_0437     HI_0437
+## HI_0438     HI_0438
+## HI_0439     HI_0439
+## HI_0504     HI_0504
+## HI_0516     HI_0516
+## HI_0547     HI_0547
+## HI_0601     HI_0601
+## HI_0655     HI_0655
+## HI_0656     HI_0656
+## HI_0656.1 HI_0656.1
+## HI_0658     HI_0658
+## HI_0659     HI_0659
+## HI_0660     HI_0660
+## HI_0684     HI_0684
+## HI_0685     HI_0685
+## HI_0758     HI_0758
+## HI_0764     HI_0764
+## HI_0786     HI_0786
+## HI_0788     HI_0788
+## HI_0789     HI_0789
+## HI_0803     HI_0803
+## HI_0830     HI_0830
+## HI_0831     HI_0831
+## HI_0862     HI_0862
+## HI_0938     HI_0938
+## HI_0939     HI_0939
+## HI_0940     HI_0940
+## HI_0941     HI_0941
+## HI_0942     HI_0942
+## HI_0952     HI_0952
+## HI_0982     HI_0982
+## HI_0983     HI_0983
+## HI_0984     HI_0984
+## HI_0985     HI_0985
+## HI_1008     HI_1008
+## HI_1117     HI_1117
+## HI_1182     HI_1182
+## HI_1183     HI_1183
+## HI_1211     HI_1211
+## HI_1328     HI_1328
+## HI_1387     HI_1387
+## HI_1388     HI_1388
+## HI_1388.1 HI_1388.1
+## HI_1389     HI_1389
+## HI_1389.1 HI_1389.1
+## HI_1390     HI_1390
+## HI_1430     HI_1430
+## HI_1431     HI_1431
+## HI_1432     HI_1432
+## HI_1442     HI_1442
+## HI_1443     HI_1443
+##                                                                                        Names
+## HI_0061                                                         recombination protein (rec2)
+## HI_0157                                                beta-ketoacyl-ACP synthase III (fabH)
+## HI_0160                                     phosphatidylserine decarboxylase proenzyme (psd)
+## HI_0257                                             sigma(54) modulation protein%2C putative
+## HI_0296                        type 4 prepilin-like protein specific leader peptidase (hopD)
+## HI_0297                                                            protein transport protein
+## HI_0298                                                            protein transport protein
+## HI_0299                                               prepilin peptidase dependent protein D
+## HI_0365                                                       conserved hypothetical protein
+## HI_0366                       fimbrial biogenesis and twitching motility protein%2C putative
+## HI_0434                                                          competence protein F (comF)
+## HI_0435                                                          competence protein E (comE)
+## HI_0436                                                          competence protein D (comD)
+## HI_0437                                                          competence protein C (comC)
+## HI_0438                                                          competence protein B (comB)
+## HI_0439                                                          competence protein A (comA)
+## HI_0504                       D-ribose ABC transporter%2C periplasmic-binding protein (rbsB)
+## HI_0516                                                          ribosomal protein L1 (rpL1)
+## HI_0547                                                          ribosomal protein S6 (rpS6)
+## HI_0601                                                    DNA transformation protein (tfoX)
+## HI_0655                                                     shikimate 5-dehydrogenase (aroE)
+## HI_0656                                                       conserved hypothetical protein
+## HI_0656.1                                                     conserved hypothetical protein
+## HI_0658                                               ABC transporter%2C ATP-binding protein
+## HI_0659                                                       predicted coding region HI0659
+## HI_0660                                                       predicted coding region HI0660
+## HI_0684                     anaerobic glycerol-3-phosphate dehydrogenase%2C subunit B (glpB)
+## HI_0685                     anaerobic glycerol-3-phosphate dehydrogenase%2C subunit A (glpA)
+## HI_0758                                                        ribosomal protein L31 (rpL31)
+## HI_0764                               3%2C4-dihydroxy-2-butanone 4-phosphate synthase (ribB)
+## HI_0786                                                        ribosomal protein S17 (rpS17)
+## HI_0788                                                        ribosomal protein L14 (rpL14)
+## HI_0789                                                        ribosomal protein L24 (rpL24)
+## HI_0803                                                         ribosomal protein L17 (rplQ)
+## HI_0830                                                          trp operon repressor (trpR)
+## HI_0831                           monofunctional biosynthetic peptidoglycan transglycosylase
+## HI_0862                                                       conserved hypothetical protein
+## HI_0938                                                       predicted coding region HI0938
+## HI_0939                                                       predicted coding region HI0939
+## HI_0940                                                       predicted coding region HI0940
+## HI_0941                                                       predicted coding region HI0941
+## HI_0942                                         exodeoxyribonuclease V%2C gamma chain (recC)
+## HI_0952                                                            DNA repair protein (radC)
+## HI_0982                                                         6-phosphofructokinase (pfkA)
+## HI_0983                                                       predicted coding region HI0983
+## HI_0984                                                       conserved hypothetical protein
+## HI_0985                                                        DNA processing chain A (dprA)
+## HI_1008                                                       conserved hypothetical protein
+## HI_1117                                                            competence protein (comM)
+## HI_1182                                                       predicted coding region HI1182
+## HI_1183                                                       predicted coding region HI1183
+## HI_1211                                                         lysyl-tRNA synthetase (lysU)
+## HI_1328                                                        ribosomal protein S15 (rpS15)
+## HI_1387                                             anthranilate synthase component I (trpE)
+## HI_1388                                            anthranilate synthase component II (trpG)
+## HI_1388.1                                                   predicted coding region HI1388.1
+## HI_1389                                         anthanilate phosphoribosyltransferase (trpD)
+## HI_1389.1 indole-3-glycerol phosphate synthase / phosphoribosylanthranilate isomerase (trpC)
+## HI_1390                                                 hydrogenase formation protein (hypG)
+## HI_1430                                                  short chain dehydrogenase/reductase
+## HI_1431                                              tryptophan synthase beta subunit (trpB)
+## HI_1432                                             tryptophan synthase alpha subunit (trpA)
+## HI_1442                                                          ribosomal protein S9 (rpS9)
+## HI_1443                                                        ribosomal protein L13 (rpL13)
+</code></pre>
+
+<p>B: Are all the known sxy-dependent genes in the hit list also? (NO)</p>
+
+<pre><code class="r"># Comparing if all crp-S entries fit the RNA-Seq Data
+nrow(crps.list)
+</code></pre>
+
+<pre><code>## [1] 27
+</code></pre>
+
+<pre><code class="r">nrow(output.genes[output.genes$ID %in% crps.list$orf, ])
+</code></pre>
+
+<pre><code>## [1] 25
+</code></pre>
 
 <h1>END</h1>
 
