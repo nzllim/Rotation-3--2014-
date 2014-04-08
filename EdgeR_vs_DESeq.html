@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>EdgeR vs DESeq</title>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h1>EdgeR vs DESeq</h1>
+
+<p>While testing for genes that have differential expression, I have also tried alternative pipelines to see the robustness of the model used in analysis. The testing conditions are as such:</p>
+
+<ol>
+<li>Data: WT vs sxy at time = 30</li>
+<li>Q-value (Benjamini-Hochberg corrected P-value) &lt; 0.05</li>
+<li>Models: EdgeR, DESeq</li>
+</ol>
+
+<pre><code class="r">load(&quot;edger.30.RDAT&quot;)
+load(&quot;deseq.30.RDAT&quot;)
+
+# Plotting Venn Diagram to compare the two
+library(VennDiagram)
+venn.combine &lt;- list(EdgeR = edger.30.data$ID, DESeq = deseq.30.data$ID)
+plot.new()
+venn.plot &lt;- venn.diagram(venn.combine, filename = NULL, fill = c(&quot;red&quot;, &quot;blue&quot;))
+grid.draw(venn.plot)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAABHVBMVEX9/v0AAAAAABwAADMAADkAAGUAGUwAGYgAHEcAMzMAM1oAOY8AZrUcAEwcJYgcJaQzAAAzACszGQAzLr85AAA5ADM5ADk5AGU5HEc5R205j9pHDgBHDitHGWtHJStHLr9HOL9aGQBaGUxaLr9lAABlAGVlZrVlj9pltf1mAABmABxmMwBmM1pmR21mWn9tJSttQb9/Lkx/Lmt/OGt/QL9/QYh/QaSPHACPHByPM0ePOQCPOTmPRzOPWkePbX+Pj9qP2/21MwC1MzO1R0e1Wn+1ZgC1f3+1j4+1tWW1/tq1/v3ajznaj4/a/v3bRxzbRzPbR0fbf3/9tWX9tY/924/9/rX9/tr9/v3+WjP+Wkf+Wlr+bUf+f1r+f23+f3+T45X+AAAAX3RSTlP///////////////////////////////////////////////////////////////////////////////////////////////////////////////////8A/////////5jTtkcAAAAJcEhZcwAACxIAAAsSAdLdfvwAABIeSURBVHic7d17exxlGcdxplDFUAUFDykewCNFCCKBYtXQqq3aSqSx7UZJ5v2/DGdmt+lmM4fncB+f5/f9p71yGTNzf/Z+ZrflgpdWqMpe0r4ApBPgKw3wlQb4SgN8pQG+0gBfaYCvNMBXGuArDfCVBvhKqwm+WUr7AiUrHn5Ru9LXQLnwI5rtfFW9AAqEj9MOeg1o3xJDZcHni8+8ALRvjrZy4GnFp/i175KsIuAZzcf0tW+XJPfwIugF6vuGlzS/iq9991n5hVdBv6KvPYXkfMKLHu9l2nuEN4D+PL/23uANoW9yau8K3sIBP5ZHe0fwNtE3ubP3Am9afZ0vehfwRk/4qzmydwDvRX3IDb11eFfq63zY24Z3yN7ngd4yvE/1debt7cJ7Zu8zTm8V3jv7kGV6m/BFsPfZpTcI7/Qd3URW6e3BF8XeZ5PeGHxx6kMW6W3Bl+neWqS3BF+q+pA1ejvwxW7782zJW4Evnr3P0tbbgK+CvTUlbwG+FvYhK/QG4Gtib81svTp8Zex9JuS14St0b03Q68LXyd5akNeEr+pN3W7a9IrwNbO36vJq8JWz96nSa8HD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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+<p>From the Venn Diagram, we can see that all the genes identified by DESeq is also found by EdgeR, however EdgeR has found more hits.</p>
+
+<p>So, what are the genes that are not found by DESeq? (i.e. EdgeR-exclusive)</p>
+
+<pre><code class="r"># What are the genes that are not in DESeq?
+deseq.prime &lt;- setdiff(edger.30.data$ID, deseq.30.data$ID)
+tmp.edger.holder &lt;- edger.30.data
+rownames(tmp.edger.holder) &lt;- tmp.edger.holder$ID
+deseq.prime.list &lt;- tmp.edger.holder[deseq.prime, ]
+rm(tmp.edger.holder)
+(data.frame(deseq.prime.list, row.names = NULL))
+</code></pre>
+
+<pre><code>##         ID
+## 1  HI_0051
+## 2  HI_0052
+## 3  HI_0062
+## 4  HI_0075
+## 5  HI_0159
+## 6  HI_0174
+## 7  HI_0202
+## 8  HI_0203
+## 9  HI_0231
+## 10 HI_0328
+## 11 HI_0357
+## 12 HI_0419
+## 13 HI_0503
+## 14 HI_0514
+## 15 HI_0515
+## 16 HI_0517
+## 17 HI_0534
+## 18 HI_0544
+## 19 HI_0545
+## 20 HI_0546
+## 21 HI_0608
+## 22 HI_0610
+## 23 HI_0614
+## 24 HI_0654
+## 25 HI_0683
+## 26 HI_0776
+## 27 HI_0777
+## 28 HI_0778
+## 29 HI_0779
+## 30 HI_0780
+## 31 HI_0781
+## 32 HI_0782
+## 33 HI_0783
+## 34 HI_0784
+## 35 HI_0785
+## 36 HI_0787
+## 37 HI_0790
+## 38 HI_0791
+## 39 HI_0794
+## 40 HI_0795
+## 41 HI_0796
+## 42 HI_0797
+## 43 HI_0799
+## 44 HI_0800
+## 45 HI_0801
+## 46 HI_0802
+## 47 HI_0804
+## 48 HI_0822
+## 49 HI_0979
+## 50 HI_0998
+## 51 HI_1002
+## 52 HI_1030
+## 53 HI_1109
+## 54 HI_1110
+## 55 HI_1111
+## 56 HI_1112
+## 57 HI_1124
+## 58 HI_1167
+## 59 HI_1237
+## 60 HI_1384
+## 61 HI_1385
+## 62 HI_1427
+## 63 HI_1478
+## 64 HI_1530
+## 65 HI_1631
+## 66 HI_1662
+## 67 HI_1731
+##                                                                 Names
+## 1                        conserved hypothetical transmembrane protein
+## 2                                      conserved hypothetical protein
+## 3                                      dnaK suppressor protein (dksA)
+## 4              anaerobic ribonucleoside-triphosphate reductase (nrdD)
+## 5                                      conserved hypothetical protein
+## 6                                      conserved hypothetical protein
+## 7                          tRNA (guanine-N1)-methyltransferase (trmD)
+## 8                                      conserved hypothetical protein
+## 9                                   ATP-dependent RNA helicase (deaD)
+## 10                                          elongation factor P (efp)
+## 11                          thiamine biosynthesis protein%2C putative
+## 12                                               protease%2C putative
+## 13                D-ribose ABC transporter%2C permease protein (rbsC)
+## 14                  DNA-directed RNA polymerase%2C beta&#39; chain (rpoC)
+## 15                   DNA-directed RNA polymerase%2C beta chain (rpoB)
+## 16                                      ribosomal protein L11 (rpL11)
+## 17                                     aspartate ammonia-lyase (aspA)
+## 18                                        ribosomal protein L9 (rpL9)
+## 19                                      ribosomal protein S18 (rpS18)
+## 20                            primosomal replication protein N (priB)
+## 21                                     conserved hypothetical protein
+## 22                                           L-fucose permease (fucP)
+## 23                                          L-fucose isomerase (fucI)
+## 24                           DNA-3-methyladenine glycosidase I (tagI)
+## 25   anaerobic glycerol-3-phosphate dehydrogenase%2C subunit C (glpC)
+## 26                                      ribosomal protein S10 (rpS10)
+## 27                                        ribosomal protein L3 (rpL3)
+## 28                                        ribosomal protein L4 (rpL4)
+## 29                                      ribosomal protein L23 (rpL23)
+## 30                                        ribosomal protein L2 (rpL2)
+## 31                                      ribosomal protein S19 (rpS19)
+## 32                                      ribosomal protein L22 (rpL22)
+## 33                                        ribosomal protein S3 (rpS3)
+## 34                                      ribosomal protein L16 (rpL16)
+## 35                                      ribosomal protein L29 (rpL29)
+## 36                                     predicted coding region HI0787
+## 37                                        ribosomal protein L5 (rpL5)
+## 38                                      ribosomal protein S14 (rpS14)
+## 39                                      ribosomal protein L18 (rpL18)
+## 40                                        ribosomal protein S5 (rpS5)
+## 41                                      ribosomal protein L30 (rpL30)
+## 42                                      ribosomal protein L15 (rpL15)
+## 43                                      ribosomal protein S13 (rpS13)
+## 44                                      ribosomal protein S11 (rpS11)
+## 45                                        ribosomal protein S4 (rpS4)
+## 46                  DNA-directed RNA polymerase%2C alpha chain (rpoA)
+## 47                                     predicted coding region HI0804
+## 48    galactose ABC transporter%2C periplasmic-binding protein (mglB)
+## 49                                  nitrogen fixation protein (nifR3)
+## 50                                      ribosomal protein L34 (rpL34)
+## 51                       thiophene and furan oxidation protein (thdF)
+## 52                       conserved hypothetical transmembrane protein
+## 53                D-xylose ABC transporter%2C permease protein (xylH)
+## 54             D-xylose ABC transporter%2C ATP-binding protein (xylG)
+## 55     D-xylose ABC transporter%2C periplasmic-binding protein (xylF)
+## 56                                            xylose isomerase (xylA)
+## 57 oligopeptide ABC transporter%2C periplasmic-binding protein (oppA)
+## 58                              phosphoserine aminotransferase (serC)
+## 59                                       heat shock protein 70 (dnaK)
+## 60                                                    ferritin (rsgA)
+## 61                                                    ferritin (rsgA)
+## 62                                     predicted coding region HI1427
+## 63                                                  transposase (muA)
+## 64                                          glutamate permease (gltS)
+## 65                                     predicted coding region HI1631
+## 66                   2-oxoglutarate dehydrogenase E1 component (sucA)
+## 67                                     conserved hypothetical protein
+</code></pre>
+
+<h1>END</h1>
+
+</body>
+
+</html>
